@@ -201,17 +201,21 @@
         <form style="display:flex;flex-direction:column;gap:20px" onSubmit="{{ handleSubmit }}">
           <div>
             <label style="font-size:13px;opacity:0.7;display:block;margin-bottom:8px">Name</label>
-            <input type="text" placeholder="Your name" style="width:100%;background:transparent;border:none;border-bottom:1.5px solid #f5f3ea55;padding:10px 0;color:#f5f3ea;font-size:16px;font-family:'Work Sans',sans-serif;outline:none">
+            <input type="text" name="name" required="required" placeholder="Your name" style="width:100%;background:transparent;border:none;border-bottom:1.5px solid #f5f3ea55;padding:10px 0;color:#f5f3ea;font-size:16px;font-family:'Work Sans',sans-serif;outline:none">
           </div>
           <div>
             <label style="font-size:13px;opacity:0.7;display:block;margin-bottom:8px">Email</label>
-            <input type="email" placeholder="you@example.com" style="width:100%;background:transparent;border:none;border-bottom:1.5px solid #f5f3ea55;padding:10px 0;color:#f5f3ea;font-size:16px;font-family:'Work Sans',sans-serif;outline:none">
+            <input type="email" name="email" required="required" placeholder="you@example.com" style="width:100%;background:transparent;border:none;border-bottom:1.5px solid #f5f3ea55;padding:10px 0;color:#f5f3ea;font-size:16px;font-family:'Work Sans',sans-serif;outline:none">
           </div>
           <div>
             <label style="font-size:13px;opacity:0.7;display:block;margin-bottom:8px">Tell us about your garden</label>
-            <textarea rows="4" placeholder="Site, size, what you're hoping for..." style="width:100%;background:transparent;border:none;border-bottom:1.5px solid #f5f3ea55;padding:10px 0;color:#f5f3ea;font-size:16px;font-family:'Work Sans',sans-serif;outline:none;resize:none"></textarea>
+            <textarea rows="4" name="message" placeholder="Site, size, what you're hoping for..." style="width:100%;background:transparent;border:none;border-bottom:1.5px solid #f5f3ea55;padding:10px 0;color:#f5f3ea;font-size:16px;font-family:'Work Sans',sans-serif;outline:none;resize:none"></textarea>
           </div>
-          <button type="submit" style-hover="background:#ffffff;color:#2E3A26;box-shadow:inset 0 0 0 2px #D6D35C" style="margin-top:12px;background:#D6D35C;color:#2E3A26;border:none;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:700;cursor:pointer;width:fit-content;transition:background 0.35s ease,box-shadow 0.35s ease,color 0.35s ease">Send message</button>
+          <input type="text" name="botfield" tabIndex="-1" autoComplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+          <button type="submit" disabled="{{ contactBusy }}" style-hover="background:#ffffff;color:#2E3A26;box-shadow:inset 0 0 0 2px #D6D35C" style="margin-top:12px;background:#D6D35C;color:#2E3A26;border:none;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:700;cursor:pointer;width:fit-content;transition:background 0.35s ease,box-shadow 0.35s ease,color 0.35s ease">{{ contactButtonText }}</button>
+          <sc-if value="{{ contactMessage }}">
+            <div style="font-size:14px;line-height:1.5;opacity:0.85">{{ contactMessage }}</div>
+          </sc-if>
         </form>
       </sc-if>
     </div>
@@ -297,11 +301,58 @@ class Component extends DCLogic {
     window.addEventListener('wheel', onWheel, { passive: false });
     this._offSnap = () => window.removeEventListener('wheel', onWheel);
   }
-  handleSubmit = (e) => { e.preventDefault(); this.setState({ sent: true }); };
+  // Netlify Forms: submissions POST url-encoded to the site root with a
+  // form-name field matching the hidden static form Netlify detects at deploy.
+  ENQUIRY_FORM_NAME = 'enquiry';
+  sendEnquiry = async (payload) => {
+    const body = new URLSearchParams();
+    body.append('form-name', this.ENQUIRY_FORM_NAME);
+    Object.keys(payload).forEach(k => {
+      const v = payload[k];
+      if (v == null || v === '') return;
+      body.append(k, Array.isArray(v) ? v.join(', ') : String(v));
+    });
+    const res = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString()
+    });
+    if (!res.ok) throw new Error('Something went wrong — please email us directly.');
+    return true;
+  };
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const fd = new FormData(form);
+    this.setState({ contactBusy: true, contactMessage: '' });
+    try {
+      await this.sendEnquiry({
+        name: fd.get('name'),
+        email: fd.get('email'),
+        message: fd.get('message'),
+        botfield: fd.get('botfield'),
+        source: 'About page'
+      });
+      this.setState({ contactBusy: false, sent: true });
+    } catch (err) {
+      this.setState({ contactBusy: false, contactMessage: err.message });
+    }
+  };
   renderVals() {
-    return { sent: this.state.sent, notSent: !this.state.sent, handleSubmit: this.handleSubmit, navOpen: this.state.navOpen, toggleNav: this.toggleNav, closeNav: this.closeNav };
+    return { sent: this.state.sent, notSent: !this.state.sent, handleSubmit: this.handleSubmit, contactBusy: !!this.state.contactBusy, contactMessage: this.state.contactMessage || '', contactButtonText: this.state.contactBusy ? 'Sending…' : 'Send message', navOpen: this.state.navOpen, toggleNav: this.toggleNav, closeNav: this.closeNav };
   }
 }
 </script>
+<form name="enquiry" data-netlify="true" netlify-honeypot="botfield" hidden>
+  <input type="text" name="name">
+  <input type="email" name="email">
+  <input type="tel" name="phone">
+  <input type="text" name="location">
+  <input type="text" name="interest">
+  <textarea name="notes"></textarea>
+  <textarea name="message"></textarea>
+  <input type="text" name="source">
+  <input type="text" name="botfield">
+</form>
 </body>
 </html>

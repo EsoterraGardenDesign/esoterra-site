@@ -540,7 +540,7 @@
         <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5.6vw,48px);line-height:1.05;letter-spacing:-0.02em;margin:0 0 28px">Tell us about your garden.</h2>
         <p style="font-size:18px;line-height:1.7;opacity:0.85;margin:0 0 40px;max-width:440px">Whether it's a full redesign or a planting refresh, we'd love to hear about the site and what you're hoping for.</p>
         <div style="display:flex;flex-direction:column;gap:16px;font-size:16px">
-          <div><span style="opacity: 0.6;">Email</span> &nbsp; <a href="mailto:hello@esoterragardendesign.co.uk" style-hover="color:#D6D35C" style="color:#f5f3ea;text-decoration:none;transition:color 0.3s ease">hello@esoterragarden.co.uk</a></div>
+          <div><span style="opacity: 0.6;">Email</span> &nbsp; <a href="mailto:hello@esoterragardendesign.co.uk" style-hover="color:#D6D35C" style="color:#f5f3ea;text-decoration:none;transition:color 0.3s ease">hello@esoterragardendesign.co.uk</a></div>
           <div><span style="opacity: 0.6;">Phone</span>&nbsp; &nbsp;<a href="tel:+447825166378" style-hover="color:#D6D35C" style="color:#f5f3ea;text-decoration:none;transition:color 0.3s ease">07825 166 378</a></div>
           <div><span style="opacity: 0.6;">Studio</span> &nbsp; Bristol, UK</div>
           <a href="https://www.instagram.com/esoterra_garden_design/" target="_blank" rel="noopener" style-hover="color:#D6D35C" style="display:inline-flex;align-items:center;gap:10px;width:fit-content;margin-top:4px;color:#f5f3ea;text-decoration:none;transition:color 0.3s ease">
@@ -556,17 +556,21 @@
       <form style="display:flex;flex-direction:column;gap:20px" onSubmit="{{ handleSubmit }}">
         <div>
           <label style="font-size:13px;opacity:0.7;display:block;margin-bottom:8px">Name</label>
-          <input type="text" placeholder="Your name" style="width:100%;background:transparent;border:none;border-bottom:1.5px solid #f5f3ea55;padding:10px 0;color:#f5f3ea;font-size:16px;font-family:'Work Sans',sans-serif;outline:none">
+          <input type="text" name="name" required="required" placeholder="Your name" style="width:100%;background:transparent;border:none;border-bottom:1.5px solid #f5f3ea55;padding:10px 0;color:#f5f3ea;font-size:16px;font-family:'Work Sans',sans-serif;outline:none">
         </div>
         <div>
           <label style="font-size:13px;opacity:0.7;display:block;margin-bottom:8px">Email</label>
-          <input type="email" placeholder="you@example.com" style="width:100%;background:transparent;border:none;border-bottom:1.5px solid #f5f3ea55;padding:10px 0;color:#f5f3ea;font-size:16px;font-family:'Work Sans',sans-serif;outline:none">
+          <input type="email" name="email" required="required" placeholder="you@example.com" style="width:100%;background:transparent;border:none;border-bottom:1.5px solid #f5f3ea55;padding:10px 0;color:#f5f3ea;font-size:16px;font-family:'Work Sans',sans-serif;outline:none">
         </div>
         <div>
           <label style="font-size:13px;opacity:0.7;display:block;margin-bottom:8px">Tell us about your garden</label>
-          <textarea rows="4" placeholder="Site, size, what you're hoping for..." style="width:100%;background:transparent;border:none;border-bottom:1.5px solid #f5f3ea55;padding:10px 0;color:#f5f3ea;font-size:16px;font-family:'Work Sans',sans-serif;outline:none;resize:none"></textarea>
+          <textarea rows="4" name="message" placeholder="Site, size, what you're hoping for..." style="width:100%;background:transparent;border:none;border-bottom:1.5px solid #f5f3ea55;padding:10px 0;color:#f5f3ea;font-size:16px;font-family:'Work Sans',sans-serif;outline:none;resize:none"></textarea>
         </div>
-        <button type="submit" style-hover="background:#ffffff;color:#2E3A26;box-shadow:inset 0 0 0 2px #D6D35C" style="margin-top:12px;background:#D6D35C;color:#2E3A26;border:none;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:700;cursor:pointer;width:fit-content;transition:background 0.35s ease,box-shadow 0.35s ease,color 0.35s ease">Send message</button>
+        <input type="text" name="botfield" tabIndex="-1" autoComplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <button type="submit" disabled="{{ contactBusy }}" style-hover="background:#ffffff;color:#2E3A26;box-shadow:inset 0 0 0 2px #D6D35C" style="margin-top:12px;background:#D6D35C;color:#2E3A26;border:none;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:700;cursor:pointer;width:fit-content;transition:background 0.35s ease,box-shadow 0.35s ease,color 0.35s ease">{{ contactButtonText }}</button>
+        <sc-if value="{{ contactMessage }}">
+          <div style="font-size:14px;line-height:1.5;opacity:0.85">{{ contactMessage }}</div>
+        </sc-if>
       </form>
     </div>
   </section>
@@ -643,6 +647,9 @@
                   <a href="#" onClick="{{ stepBack }}" style="font-size:14px;font-weight:600;color:#2E3A26;opacity:0.5;text-decoration:none">Back</a>
                 </sc-if>
               </div>
+              <sc-if value="{{ modalError }}">
+                <div style="margin-top:18px;font-size:14px;line-height:1.5;color:#8a3b2a">{{ modalError }}</div>
+              </sc-if>
             </form>
           </div>
         </sc-if>
@@ -779,7 +786,44 @@ class Component extends DCLogic {
   toggleNav = (e) => { if (e) e.preventDefault(); this.setState(s => ({ navOpen: !s.navOpen })); };
   closeNav = (e) => { this.setState({ navOpen: false }); };
   openModalNav = (e) => { if (e) e.preventDefault(); this.setState({ navOpen: false, modalOpen: true, modalSent: false, modalStep: 0 }); };
-  handleSubmit = (e) => { e.preventDefault(); };
+  // Netlify Forms: submissions POST url-encoded to the site root with a
+  // form-name field matching the hidden static form Netlify detects at deploy.
+  ENQUIRY_FORM_NAME = 'enquiry';
+  sendEnquiry = async (payload) => {
+    const body = new URLSearchParams();
+    body.append('form-name', this.ENQUIRY_FORM_NAME);
+    Object.keys(payload).forEach(k => {
+      const v = payload[k];
+      if (v == null || v === '') return;
+      body.append(k, Array.isArray(v) ? v.join(', ') : String(v));
+    });
+    const res = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString()
+    });
+    if (!res.ok) throw new Error('Something went wrong — please email us directly.');
+    return true;
+  };
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const fd = new FormData(form);
+    this.setState({ contactBusy: true, contactMessage: '' });
+    try {
+      await this.sendEnquiry({
+        name: fd.get('name'),
+        email: fd.get('email'),
+        message: fd.get('message'),
+        botfield: fd.get('botfield'),
+        source: 'Contact section'
+      });
+      form.reset();
+      this.setState({ contactBusy: false, contactMessage: 'Thank you — your message is on its way. We will be in touch shortly.' });
+    } catch (err) {
+      this.setState({ contactBusy: false, contactMessage: err.message });
+    }
+  };
   openModal = (e) => { if (e) e.preventDefault(); this.setState({ modalOpen: true, modalSent: false, modalStep: 0 }); };
   steps = [
     { key: 'name', type: 'text', title: "First, what's your name?", help: 'So we know who we are speaking to.', placeholder: 'Your name' },
@@ -790,11 +834,21 @@ class Component extends DCLogic {
     { key: 'notes', kind: 'notes', title: 'Anything else we should know?', help: 'Site, size, what you are hoping for. Optional.', placeholder: 'Tell us a little about the garden…' }
   ];
   chipOptions = ['Full redesign', 'Planting only', 'Landscaping', 'Not sure yet'];
-  stepNext = (e) => {
+  stepNext = async (e) => {
     if (e) e.preventDefault();
     const last = this.state.modalStep >= this.steps.length - 1;
-    if (last) this.setState({ modalSent: true });
-    else this.setState({ modalStep: this.state.modalStep + 1 });
+    if (!last) { this.setState({ modalStep: this.state.modalStep + 1 }); return; }
+    const a = this.state.answers || {};
+    this.setState({ modalBusy: true, modalError: '' });
+    try {
+      await this.sendEnquiry({
+        name: a.name, email: a.email, phone: a.phone, location: a.location,
+        notes: a.notes, interest: this.state.picks || [], source: 'Consultation form'
+      });
+      this.setState({ modalBusy: false, modalSent: true });
+    } catch (err) {
+      this.setState({ modalBusy: false, modalError: err.message });
+    }
   };
   stepBack = (e) => { if (e) e.preventDefault(); this.setState({ modalStep: Math.max(0, this.state.modalStep - 1) }); };
   stepChange = (e) => {
@@ -940,7 +994,8 @@ class Component extends DCLogic {
       stepIsChips: step.kind === 'chips',
       stepIsNotes: step.kind === 'notes',
       stepCanBack: si > 0,
-      stepCta: si >= this.steps.length - 1 ? 'Request my visit' : 'Next',
+      modalError: this.state.modalError || '',
+      stepCta: this.state.modalBusy ? 'Sending…' : (si >= this.steps.length - 1 ? 'Request my visit' : 'Next'),
       stepNext: this.stepNext,
       stepBack: this.stepBack,
       stepChange: this.stepChange,
@@ -955,9 +1010,20 @@ class Component extends DCLogic {
         };
       })
     };
-    return { navOpen: this.state.navOpen, toggleNav: this.toggleNav, closeNav: this.closeNav, openModalNav: this.openModalNav, processCard5ImgSrc, aboutImg2Src, aboutImg3Src, aboutImg4Src, faqs, handleSubmit: this.handleSubmit, ...stepVals, ...lightboxVals, modalOpen: this.state.modalOpen, modalSent: this.state.modalSent, modalNotSent: !this.state.modalSent, openModal: this.openModal, stopProp: this.stopProp, closeModal: this.closeModal, modalSubmit: this.modalSubmit, heroImgSrc, aboutImgSrc, service1ImgSrc, service2ImgSrc, service3ImgSrc, proj1ImgSrc, proj2ImgSrc, proj3ImgSrc, proj4ImgSrc, processCard1ImgSrc, processCard2ImgSrc, processCard3ImgSrc, processCard4ImgSrc, glow1, glowMask1, glow2, glowMask2, glow3, glowMask3, glow4, glowMask4 };
+    return { navOpen: this.state.navOpen, toggleNav: this.toggleNav, closeNav: this.closeNav, openModalNav: this.openModalNav, processCard5ImgSrc, aboutImg2Src, aboutImg3Src, aboutImg4Src, faqs, handleSubmit: this.handleSubmit, contactBusy: !!this.state.contactBusy, contactMessage: this.state.contactMessage || '', contactButtonText: this.state.contactBusy ? 'Sending…' : 'Send message', ...stepVals, ...lightboxVals, modalOpen: this.state.modalOpen, modalSent: this.state.modalSent, modalNotSent: !this.state.modalSent, openModal: this.openModal, stopProp: this.stopProp, closeModal: this.closeModal, modalSubmit: this.modalSubmit, heroImgSrc, aboutImgSrc, service1ImgSrc, service2ImgSrc, service3ImgSrc, proj1ImgSrc, proj2ImgSrc, proj3ImgSrc, proj4ImgSrc, processCard1ImgSrc, processCard2ImgSrc, processCard3ImgSrc, processCard4ImgSrc, glow1, glowMask1, glow2, glowMask2, glow3, glowMask3, glow4, glowMask4 };
   }
 }
 </script>
+<form name="enquiry" data-netlify="true" netlify-honeypot="botfield" hidden>
+  <input type="text" name="name">
+  <input type="email" name="email">
+  <input type="tel" name="phone">
+  <input type="text" name="location">
+  <input type="text" name="interest">
+  <textarea name="notes"></textarea>
+  <textarea name="message"></textarea>
+  <input type="text" name="source">
+  <input type="text" name="botfield">
+</form>
 </body>
 </html>
