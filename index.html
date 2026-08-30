@@ -84,6 +84,8 @@
   html { scroll-behavior: smooth; }
   section[id] { scroll-margin-top: 84px; }
   ::selection { background: #D6D35C; color: #fff; }
+  image-slot, image-slot::part(frame), image-slot::part(image), img, video { touch-action: pan-y pinch-zoom !important; }
+  image-slot[data-reframe], image-slot[data-reframe]::part(image) { touch-action: none !important; }
   @keyframes omFadeIn { from { opacity: 0 } to { opacity: 1 } }
   @keyframes omRise { from { opacity: 0; transform: translateY(28px) } to { opacity: 1; transform: translateY(0) } }
   @media (max-width: 1180px) {
@@ -439,28 +441,28 @@
         </div>
       </div>
       <div class="proj-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-        <div onClick="{{ openProj4 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:1 / 1">
+        <div onClick="{{ openProj4 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
           <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-4" shape="rect" placeholder="Featured project — City Garden" src="{{ proj4ImgSrc }}" hint-size="100%,100%"></x-import>
           <div onClick="{{ openProj4 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
             <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">City Garden</div>
             <div style="opacity:0.85;font-size:14px">Staple Hill, Bristol</div>
           </div>
         </div>
-        <div onClick="{{ openProj1 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:1 / 1">
+        <div onClick="{{ openProj1 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
           <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-1" shape="rect" placeholder="Project photo" src="{{ proj1ImgSrc }}" hint-size="100%,100%"></x-import>
           <div onClick="{{ openProj1 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
             <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Countryside Estate</div>
             <div style="opacity:0.85;font-size:14px">Iron Acton, Bristol</div>
           </div>
         </div>
-        <div onClick="{{ openProj2 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:1 / 1">
+        <div onClick="{{ openProj2 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
           <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-2" shape="rect" placeholder="Project photo" src="{{ proj2ImgSrc }}" hint-size="100%,100%"></x-import>
           <div onClick="{{ openProj2 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
             <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Cotswolds Valley Garden</div>
             <div style="opacity:0.85;font-size:14px">Sapperton</div>
           </div>
         </div>
-        <div onClick="{{ openProj3 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:1 / 1">
+        <div onClick="{{ openProj3 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
           <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-3" shape="rect" placeholder="Project photo" src="{{ proj3ImgSrc }}" hint-size="100%,100%"></x-import>
           <div onClick="{{ openProj3 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
             <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Hotel Garden</div>
