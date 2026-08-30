@@ -108,8 +108,10 @@
     .step-dot { display: none !important; }
     .step-avatar { margin-left: 0 !important; }
     .contact-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
-    .lb-row { gap: 8px !important; }
-    .lb-row > a { width: 36px !important; height: 36px !important; }
+    .lb-row { gap: 0 !important; position: relative !important; }
+    .lb-row .lb-arrow { position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; z-index: 2 !important; width: 40px !important; height: 40px !important; background: #2E3A26a8 !important; }
+    .lb-row .lb-prev { left: 6px !important; }
+    .lb-row .lb-next { right: 6px !important; }
   }
 </style>
 </helmet>
@@ -587,13 +589,13 @@
   <sc-if value="{{ lightboxOpen }}">
     <div onClick="{{ closeLightbox }}" style="position:fixed;inset:0;z-index:300;background:#2E3A26f2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:clamp(16px,4vw,48px);animation:omFadeIn 0.25s ease both">
       <a href="#" onClick="{{ closeLightbox }}" style-hover="background:#D6D35C" style="position:absolute;top:28px;right:32px;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f5f3ea1f;color:#f5f3ea;text-decoration:none;font-size:18px;line-height:1;transition:background 0.3s ease,color 0.3s ease">×</a>
-      <div class="lb-row" onClick="{{ stopProp }}" style="display:flex;align-items:center;gap:20px;animation:omRise 0.4s cubic-bezier(0.2,0.8,0.2,1) both">
+      <div class="lb-row" onClick="{{ stopProp }}" onTouchStart="{{ lbTouchStart }}" onTouchEnd="{{ lbTouchEnd }}" style="display:flex;align-items:center;gap:20px;animation:omRise 0.4s cubic-bezier(0.2,0.8,0.2,1) both">
         <sc-if value="{{ hasGallery }}" hint-placeholder-val="{{ true }}">
-          <a href="#" onClick="{{ lightboxPrev }}" style-hover="background:#D6D35C;color:#2E3A26" style="flex:none;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f5f3ea1f;color:#f5f3ea;text-decoration:none;font-size:20px;line-height:1;transition:background 0.3s ease,color 0.3s ease">‹</a>
+          <a href="#" class="lb-arrow lb-prev" onClick="{{ lightboxPrev }}" style-hover="background:#D6D35C;color:#2E3A26" style="flex:none;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f5f3ea1f;color:#f5f3ea;text-decoration:none;font-size:20px;line-height:1;transition:background 0.3s ease,color 0.3s ease">‹</a>
         </sc-if>
         {{ lightboxImg }}
         <sc-if value="{{ hasGallery }}" hint-placeholder-val="{{ true }}">
-          <a href="#" onClick="{{ lightboxNext }}" style-hover="background:#D6D35C;color:#2E3A26" style="flex:none;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f5f3ea1f;color:#f5f3ea;text-decoration:none;font-size:20px;line-height:1;transition:background 0.3s ease,color 0.3s ease">›</a>
+          <a href="#" class="lb-arrow lb-next" onClick="{{ lightboxNext }}" style-hover="background:#D6D35C;color:#2E3A26" style="flex:none;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f5f3ea1f;color:#f5f3ea;text-decoration:none;font-size:20px;line-height:1;transition:background 0.3s ease,color 0.3s ease">›</a>
         </sc-if>
       </div>
       <div style="text-align:center;color:#f5f3ea">
@@ -910,6 +912,22 @@ class Component extends DCLogic {
   componentWillUnmount() { clearTimeout(this._lbT); }
   closeLightbox = (e) => { if (e) e.preventDefault(); this.setState({ lightbox: 0, lbIndex: 0 }); };
   lightboxStep = (d) => (e) => { if (e) { e.preventDefault(); e.stopPropagation(); } this.setState(s => ({ lbIndex: (s.lbIndex || 0) + d })); };
+  lbTouchStart = (e) => {
+    const t = e.touches && e.touches[0];
+    this._lbTX = t ? t.clientX : null;
+    this._lbTY = t ? t.clientY : null;
+  };
+  lbTouchEnd = (e) => {
+    if (this._lbTX == null) return;
+    const t = e.changedTouches && e.changedTouches[0];
+    const x = this._lbTX, y = this._lbTY;
+    this._lbTX = this._lbTY = null;
+    if (!t) return;
+    const dx = t.clientX - x, dy = t.clientY - y;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+      this.setState(s => ({ lbIndex: (s.lbIndex || 0) + (dx < 0 ? 1 : -1) }));
+    }
+  };
   onLightboxKey = (e) => {
     if (!this.state.lightbox) return;
     if (e.key === 'ArrowRight') this.setState(s => ({ lbIndex: (s.lbIndex || 0) + 1 }));
@@ -973,6 +991,8 @@ class Component extends DCLogic {
       lightboxCounter: (gi + 1) + ' / ' + gal.length,
       lightboxPrev: this.lightboxStep(-1),
       lightboxNext: this.lightboxStep(1),
+      lbTouchStart: this.lbTouchStart,
+      lbTouchEnd: this.lbTouchEnd,
       closeLightbox: this.closeLightbox,
       openProj1: this.openLightbox(1),
       openProj2: this.openLightbox(2),
