@@ -17,9 +17,9 @@
 <meta name="ext-resource-dependency" content="./assets/textured-planting.jpeg" data-resource-id="aboutImg2">
 <meta name="ext-resource-dependency" content="./assets/staple-hill-border-planting-close.jpg" data-resource-id="aboutImg3">
 <meta name="ext-resource-dependency" content="./assets/herb-med-planter-crop.jpg" data-resource-id="aboutImg4">
-<meta name="ext-resource-dependency" content="./assets/old-rectory.jpg" data-resource-id="proj1Img">
-<meta name="ext-resource-dependency" content="./assets/wharf-cottage-render-3-web.jpg" data-resource-id="proj2Img">
-<meta name="ext-resource-dependency" content="./assets/pettifers-mlp.jpg" data-resource-id="proj3Img">
+<meta name="ext-resource-dependency" content="./assets/old-rectory-render.jpg" data-resource-id="proj1Img">
+<meta name="ext-resource-dependency" content="./assets/wharf-cottage-render-a.jpg" data-resource-id="proj2Img">
+<meta name="ext-resource-dependency" content="./assets/pettifers-render-2.jpg" data-resource-id="proj3Img">
 <meta name="ext-resource-dependency" content="./assets/sh-01-front-view.jpg" data-resource-id="proj4Img">
 <meta name="ext-resource-dependency" content="./assets/knautia-field.jpeg" data-resource-id="processCard1Img">
 <meta name="ext-resource-dependency" content="./assets/oxeye-daisy-field.jpeg" data-resource-id="processCard2Img">
@@ -81,6 +81,7 @@
   .reveal.in { opacity: 1; transform: translateY(0); }
   a { color: #2E3A26; text-decoration-color: #D6D35C; text-underline-offset: 3px; }
   a:hover { color: #D6D35C; }
+  .brand { font-family: 'Space Grotesk', sans-serif !important; font-weight: 700 !important; text-decoration: none !important; text-transform: lowercase !important; color: #2E3A26 !important; }
   html { scroll-behavior: smooth; }
   section[id] { scroll-margin-top: 84px; }
   ::selection { background: #D6D35C; color: #fff; }
@@ -94,7 +95,8 @@
     #nav-cta { padding: 9px 18px !important; font-size: 14px !important; }
   }
   @media (max-width: 900px) {
-    #nav-links, #nav-cta, .nav-e { display: none !important; }
+    #nav-links, #nav-cta { display: none !important; }
+    .nav-e { display: block !important; width: 26px !important; height: 26px !important; }
     #nav-toggle { display: flex !important; }
   }
   @media (max-width: 768px) {
@@ -122,15 +124,15 @@
 
   <!-- NAV -->
   <nav style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: nowrap; padding: 16px clamp(20px,4vw,48px); backdrop-filter: blur(8px); border-bottom: 1px solid #2E3A261a; background-color: #FFFFFFE6">
-    <a href="#home" style="display:flex;align-items:center;gap:12px;flex-shrink:1;min-width:0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em;color:#2E3A26;text-decoration:none;text-transform:lowercase;white-space:nowrap">
+    <a href="#home" class="brand" style="display:flex;align-items:center;gap:12px;flex-shrink:1;min-width:0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em;color:#2E3A26;text-decoration:none;text-transform:lowercase;white-space:nowrap">
       <img src="assets/esoterra-logo.png" alt="Esoterra" style="width:38px;height:38px;display:block;flex-shrink:0">
       <span>esoterra garden design</span>
     </a>
     <div id="nav-links" style="display:flex;flex-wrap:nowrap;white-space:nowrap;justify-content:flex-start;gap:0 22px;font-size:15px;font-weight:500;flex:1 1 auto;min-width:0">
       <a href="#home" style="text-decoration:none;color:#2E3A26">Home</a>
       <a href="about-us.html" style="text-decoration:none;color:#2E3A26">About</a>
-      <a href="#services" style="text-decoration:none;color:#2E3A26">Services</a>
       <a href="#projects" style="text-decoration:none;color:#2E3A26">Projects</a>
+      <a href="#services" style="text-decoration:none;color:#2E3A26">Services</a>
       <a href="#process-cards" style="text-decoration:none;color:#2E3A26">Process</a>
       <a href="#faqs" style="text-decoration:none;color:#2E3A26">FAQs</a>
     </div>
@@ -152,8 +154,8 @@
       <div style="display:flex;flex-direction:column;margin-top:28px;font-family:'Space Grotesk',sans-serif">
         <a href="#home" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">Home</a>
         <a href="about-us.html" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">About</a>
-        <a href="#services" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">Services</a>
         <a href="#projects" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">Projects</a>
+        <a href="#services" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">Services</a>
         <a href="#process-cards" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">Process</a>
         <a href="#faqs" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">FAQs</a>
       </div>
@@ -168,9 +170,9 @@
     </div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,#2b332766 0%,#2b332799 40%,#2b3327ee 85%,#2b3327 100%);z-index:1"></div>
     <div style="position:relative;z-index:2;padding:clamp(112px,20vh,180px) clamp(22px,4vw,48px) clamp(56px,8vw,72px);max-width:900px">
-      <div style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#D6D35C;margin-bottom:24px">Garden &amp; Planting Design Studio</div>
+      <h1 style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#D6D35C;margin:0 0 24px;font-family:'Work Sans',sans-serif">Garden &amp; Planting Design Studio</h1>
       
-      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(38px,8.6vw,88px);line-height:0.98;letter-spacing:-0.03em;margin:0 0 28px;color:#f5f3ea">A more <font color="#d6d35c" face="Instrument Serif, serif"><span style="font-weight: 400;"><i>natural</i></span></font>&nbsp;way to live outdoors.</h1><div style="font-size:20px;line-height:1.6;max-width:520px;color:#f5f3ea;opacity:0.9;margin:0 0 36px"><div style="max-width:100%"><div>We create atmospheric gardens that draw you outside and grow richer with time.</div></div></div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(38px,8.6vw,88px);line-height:0.98;letter-spacing:-0.03em;margin:0 0 28px;color:#f5f3ea">A more <font color="#d6d35c" face="Instrument Serif, serif"><span style="font-weight: 400;"><i>natural</i></span></font>&nbsp;way to live outdoors.</h2><div style="font-size:20px;line-height:1.6;max-width:520px;color:#f5f3ea;opacity:0.9;margin:0 0 36px"><div style="max-width:100%"><div>We create atmospheric gardens that draw you outside and grow richer with time.</div></div></div>
       <div style="display:flex;gap:16px;flex-wrap:wrap">
         <a href="#contact" onClick="{{ openModal }}" style-hover="background:#ffffff;color:#2E3A26;box-shadow:inset 0 0 0 2px #D6D35C" style="background:#D6D35C;color:#2E3A26;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:700;text-decoration:none;cursor:pointer;transition:background 0.35s ease,box-shadow 0.35s ease,color 0.35s ease">Book a free consultation</a>
         <a href="#projects" style-hover="background:#ffffff;color:#2E3A26;box-shadow:inset 0 0 0 2px #2E3A26" style="background:#2E3A26;color:#ffffff;box-shadow:inset 0 0 0 2px #ffffff;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;transition:background 0.35s ease,color 0.35s ease,box-shadow 0.35s ease">See our work</a>
@@ -210,8 +212,8 @@
       <video src="assets/staple-hill-planting-v2.mp4" poster="assets/sh-05-naturalistic-border.jpg" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video>
     </div>
     <div class="split-text" style="position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;padding:clamp(52px,7vw,80px) clamp(22px,5vw,64px)">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#D6D35C"></span><div style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#a4bcac">About the studio</div></div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,5.2vw,44px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 28px"><div>Your garden, shaped by its surroundings.</div></h2>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#D6D35C"></span><h2 style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#a4bcac;margin:0;font-family:'Work Sans',sans-serif">About the studio</h2></div>
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,5.2vw,44px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 28px"><div>Your garden, shaped by its surroundings.</div></h3>
       <div style="font-size:18px;line-height:1.7;margin:0 0 20px;opacity:0.85"><div><div>Esoterra garden design is a studio based in Bristol and working throughout the South West.&nbsp;We design gardens, courtyards and larger landscapes around two things: how you want to live in the space, and the character of the site itself.<br><br>That means taking time to understand how you want the garden to work for you. You may need somewhere to eat outside or space for children to play. Perhaps quieter places to retreat to, or planting that brings life to the garden. We then look closely at the site itself, from its soil and light to its views and existing features.<br><br>We bring those needs together in a clear, cohesive design. Thoughtful layouts make the garden easier to use, natural materials help it sit comfortably in its surroundings, and generous planting gives it softness, movement and character.</div></div></div>
       <div style="font-size:18px;line-height:1.7;margin:0 0 36px;opacity:0.85"></div>
       <div style="display:flex;gap:16px;flex-wrap:wrap">
@@ -221,11 +223,56 @@
     </div>
   </section>
 
+  <!-- PROJECTS -->
+  <section id="projects" class="reveal" style="padding:clamp(80px,11vw,140px) clamp(22px,4vw,48px);background:#f0ede1">
+    <div style="max-width:1400px;margin:0 auto">
+      <div style="display:flex;justify-content:space-between;align-items:end;margin-bottom:64px;flex-wrap:wrap;gap:24px">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#a4bcac"></span><h2 style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#a4bcac;margin:0;font-family:'Work Sans',sans-serif">Selected work</h2></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5.6vw,48px);line-height:1.08;letter-spacing:-0.02em;margin:0;max-width:600px">Projects.</h3>
+        </div>
+      </div>
+      <div class="proj-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div onClick="{{ openProj4 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-4" shape="rect" placeholder="Featured project — City Garden" src="{{ proj4ImgSrc }}" hint-size="100%,100%"></x-import>
+          <div onClick="{{ openProj4 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">City Garden</div>
+            <div style="opacity:0.85;font-size:14px">Staple Hill, Bristol</div>
+          </div>
+        </div>
+        <div onClick="{{ openProj1 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-1" shape="rect" placeholder="Project photo" src="{{ proj1ImgSrc }}" hint-size="100%,100%"></x-import>
+          <div onClick="{{ openProj1 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Countryside Estate</div>
+            <div style="opacity:0.85;font-size:14px">Iron Acton, Bristol</div>
+          </div>
+        </div>
+        <div onClick="{{ openProj2 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-2" shape="rect" placeholder="Project photo" src="{{ proj2ImgSrc }}" hint-size="100%,100%"></x-import>
+          <div onClick="{{ openProj2 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Cotswolds Valley Garden</div>
+            <div style="opacity:0.85;font-size:14px">Sapperton</div>
+          </div>
+        </div>
+        <div onClick="{{ openProj3 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-3" shape="rect" placeholder="Project photo" src="{{ proj3ImgSrc }}" hint-size="100%,100%"></x-import>
+          <div onClick="{{ openProj3 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Hotel Garden</div>
+            <div style="opacity:0.85;font-size:14px">Cotswolds</div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:56px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <a href="#contact" onClick="{{ openModal }}" style-hover="background:#ffffff;color:#2E3A26;box-shadow:inset 0 0 0 2px #D6D35C" style="background:#D6D35C;color:#2E3A26;padding:16px 36px;border-radius:100px;font-size:15px;font-weight:700;text-decoration:none;transition:background 0.35s ease,box-shadow 0.35s ease,color 0.35s ease">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
   <!-- SERVICES -->
   <section id="services" class="reveal" style="padding:clamp(72px,10vw,120px) clamp(22px,4vw,48px);background:#2E3A26;color:#f5f3ea">
     <div style="max-width:1400px;margin:0 auto">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#D6D35C"></span><div style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#D6D35C">What we do</div></div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5.6vw,48px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 64px;max-width:700px">How to work with us.</h2>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#D6D35C"></span><h2 style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#D6D35C;margin:0;font-family:'Work Sans',sans-serif">What we do</h2></div>
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5.6vw,48px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 64px;max-width:700px">How to work with us.</h3>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:#f5f3ea22;border-radius:24px;overflow:hidden">
         <div style="background:#2E3A26;padding:clamp(34px,5vw,48px) clamp(24px,4vw,40px);position:relative;overflow:hidden">
           <svg viewBox="0 0 200 260" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.32">
@@ -292,8 +339,8 @@
       <path d="M406 396 C400 401 383 399 377 403 C371 407 372 411 368 418 C365 425 363 442 356 445 C350 448 336 441 329 437 C322 433 319 425 312 421 C305 418 296 419 289 416 C283 413 277 407 273 401 C269 395 265 388 264 381 C264 374 264 365 270 360 C276 355 293 357 299 353 C305 349 305 345 308 338 C312 331 314 314 320 311 C327 308 340 315 347 319 C354 323 357 332 364 335 C371 339 381 337 387 340 C394 343 399 349 403 355 C407 361 412 368 412 375 C413 382 412 391 406 396Z" fill="none" stroke="#D6D35C" stroke-width="1.4"></path>
     </svg>
     <div class="split-text" style="position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;padding:clamp(52px,7vw,80px) clamp(22px,5vw,64px);order:1">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#D6D35C"></span><div style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#a4bcac">GETTING STARTED</div></div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,5.2vw,44px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 28px"><div>Let’s walk through the garden together.</div></h2>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#D6D35C"></span><h2 style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#a4bcac;margin:0;font-family:'Work Sans',sans-serif">GETTING STARTED</h2></div>
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,5.2vw,44px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 28px"><div>Let’s walk through the garden together.</div></h3>
       <div style="font-size:18px;line-height:1.7;margin:0 0 20px;opacity:0.85"><div>You may have a clear vision for the space, a collection of loose ideas or simply the feeling that your garden could work harder for you.</div></div>
       <div style="font-size:18px;line-height:1.7;margin:0 0 36px;opacity:0.85"><div><div>The best place to begin is with a complimentary consultation. We meet at the property, walk through the garden and talk about how you currently use it, what you would like to change and what kind of atmosphere you would like to create.</div></div></div>
       <a href="#contact" onClick="{{ openModal }}" style-hover="background:#ffffff;color:#2E3A26;box-shadow:inset 0 0 0 2px #D6D35C" style="display:inline-block;width:fit-content;background:#D6D35C;color:#2E3A26;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:700;text-decoration:none;transition:background 0.35s ease,box-shadow 0.35s ease,color 0.35s ease">Book a Visit<br></a>
@@ -307,7 +354,7 @@
   <section id="process-cards" class="reveal" style="position:relative;padding:clamp(80px,11vw,140px) clamp(22px,4vw,48px);overflow:visible;background:#2E3A26">
     <div style="max-width:1400px;margin:0 auto;position:relative">
     <div style="position:relative;z-index:1;display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#D6D35C"></span><div style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#a4bcac"><div>OUR PROCESS</div></div></div>
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5.6vw,48px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 64px;max-width:700px;color:#f5f3ea">From first visit to first bloom.</h2>
+    <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5.6vw,48px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 64px;max-width:700px;color:#f5f3ea">From first visit to first bloom.</h3>
     <div style="position:relative;z-index:1;display:flex;flex-direction:column">
       <div data-snap-step="1" class="step" style="position:relative;z-index:1;display:flex;align-items:flex-start;gap:48px;padding:44px 0;border-top:1px solid #f5f3ea26">
         <div class="step-num" style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(64px,12vw,140px);line-height:1;color:#D6D35C;position:absolute;left:0;top:8px;pointer-events:none;user-select:none">01</div>
@@ -391,8 +438,8 @@
       <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="about-img-3" shape="rect" placeholder="Seasonal planting" src="{{ aboutImg3Src }}" hint-size="100%,100%"></x-import>
     </div>
     <div class="split-text" style="position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;padding:clamp(52px,7vw,80px) clamp(22px,5vw,64px)">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#D6D35C"></span><div style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#a4bcac">PLANTING DESIGN</div></div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,5.2vw,44px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 28px">Planting that changes with the seasons.</h2>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#D6D35C"></span><h2 style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#a4bcac;margin:0;font-family:'Work Sans',sans-serif">PLANTING DESIGN</h2></div>
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,5.2vw,44px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 28px">Planting that changes with the seasons.</h3>
       <div style="font-size:18px;line-height:1.7;margin:0 0 20px;opacity:0.85"><div>Our planting designs are layered, characterful and considered throughout the year, with a particular eye for texture, movement and seasonal change.<br><br></div><div>Rather than relying on a brief burst of summer colour, we consider how the garden will look through every season. Spring growth gives way to Summer abundance, followed by Autumn colour, seed heads and Winter structure.<br><br></div><div>Plants are selected for the conditions, the character of the garden and the way you want it to feel. Depending on the setting, planting might be loose and naturalistic, more structured and formal, or somewhere between the two.<br><br></div><div>Over time, plants settle in and mature together, helping the garden feel increasingly established. Where appropriate, we allow room for plants to mingle and self-seed, creating a garden that evolves naturally while also providing food and shelter for birds, bees and other wildlife.</div><div><br></div></div>
       
       <a href="#contact" onClick="{{ openModal }}" style-hover="background:#ffffff;color:#2E3A26;box-shadow:inset 0 0 0 2px #D6D35C" style="display:inline-block;width:fit-content;background:#D6D35C;color:#2E3A26;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:700;text-decoration:none;transition:background 0.35s ease,box-shadow 0.35s ease,color 0.35s ease">Book a visit</a>
@@ -415,8 +462,8 @@
       <path d="M379 390 C376 393 367 392 363 394 C360 396 360 399 358 403 C356 407 354 418 350 420 C346 422 338 418 334 415 C330 412 328 406 324 404 C320 402 313 404 309 402 C305 400 301 397 299 393 C297 390 295 385 295 381 C295 377 296 371 299 368 C302 365 312 366 315 364 C319 362 318 359 320 355 C322 351 324 340 328 338 C332 336 340 340 344 343 C348 346 350 352 354 354 C358 356 365 354 369 356 C373 358 377 362 379 365 C381 369 383 373 383 377 C383 381 382 387 379 390Z" fill="none" stroke="#a4bcac" stroke-width="0.7"></path>
     </svg>
     <div class="split-text" style="position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;padding:clamp(52px,7vw,80px) clamp(22px,5vw,64px);order:1">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#D6D35C"></span><div style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#a4bcac">MATERIALS AND LANDSCAPING</div></div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,5.2vw,44px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 28px">Built carefully, designed to soften.</h2>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#D6D35C"></span><h2 style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#a4bcac;margin:0;font-family:'Work Sans',sans-serif">MATERIALS AND LANDSCAPING</h2></div>
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,5.2vw,44px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 28px">Built carefully, designed to soften.</h3>
       <p style="font-size:18px;line-height:1.7;margin:0 0 20px;opacity:0.85">Hard landscaping provides the framework of the garden, but it should never feel separate from the planting.</p>
       <div style="font-size:18px;line-height:1.7;margin:0 0 36px;opacity:0.85"><div>We consider paving, paths, walls, seating and structures alongside the planting from the very beginning. This helps every part of the garden feel connected and ensures there is a natural flow between the different spaces.<br><br></div><div>Where appropriate, we use natural and reclaimed materials selected for the way they weather and develop character. As the planting grows around them, the harder edges soften and the garden begins to feel settled, generous and lived in.</div></div>
       <a href="#contact" onClick="{{ openModal }}" style-hover="background:#ffffff;color:#2E3A26;box-shadow:inset 0 0 0 2px #D6D35C" style="display:inline-block;width:fit-content;background:#D6D35C;color:#2E3A26;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:700;text-decoration:none;transition:background 0.35s ease,box-shadow 0.35s ease,color 0.35s ease">Free landscape consultation</a>
@@ -431,50 +478,6 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="reveal" style="padding:clamp(80px,11vw,140px) clamp(22px,4vw,48px);background:#f0ede1">
-    <div style="max-width:1400px;margin:0 auto">
-      <div style="display:flex;justify-content:space-between;align-items:end;margin-bottom:64px;flex-wrap:wrap;gap:24px">
-        <div>
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#a4bcac"></span><div style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#a4bcac">Selected work</div></div>
-          <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5.6vw,48px);line-height:1.08;letter-spacing:-0.02em;margin:0;max-width:600px">Projects.</h2>
-        </div>
-      </div>
-      <div class="proj-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-        <div onClick="{{ openProj4 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
-          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-4" shape="rect" placeholder="Featured project — City Garden" src="{{ proj4ImgSrc }}" hint-size="100%,100%"></x-import>
-          <div onClick="{{ openProj4 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
-            <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">City Garden</div>
-            <div style="opacity:0.85;font-size:14px">Staple Hill, Bristol</div>
-          </div>
-        </div>
-        <div onClick="{{ openProj1 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
-          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-1" shape="rect" placeholder="Project photo" src="{{ proj1ImgSrc }}" hint-size="100%,100%"></x-import>
-          <div onClick="{{ openProj1 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
-            <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Countryside Estate</div>
-            <div style="opacity:0.85;font-size:14px">Iron Acton, Bristol</div>
-          </div>
-        </div>
-        <div onClick="{{ openProj2 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
-          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-2" shape="rect" placeholder="Project photo" src="{{ proj2ImgSrc }}" hint-size="100%,100%"></x-import>
-          <div onClick="{{ openProj2 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
-            <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Cotswolds Valley Garden</div>
-            <div style="opacity:0.85;font-size:14px">Sapperton</div>
-          </div>
-        </div>
-        <div onClick="{{ openProj3 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
-          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-3" shape="rect" placeholder="Project photo" src="{{ proj3ImgSrc }}" hint-size="100%,100%"></x-import>
-          <div onClick="{{ openProj3 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
-            <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Hotel Garden</div>
-            <div style="opacity:0.85;font-size:14px">Cotswolds</div>
-          </div>
-        </div>
-      </div>
-      <div style="text-align:center;margin-top:56px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-        <a href="#contact" onClick="{{ openModal }}" style-hover="background:#ffffff;color:#2E3A26;box-shadow:inset 0 0 0 2px #D6D35C" style="background:#D6D35C;color:#2E3A26;padding:16px 36px;border-radius:100px;font-size:15px;font-weight:700;text-decoration:none;transition:background 0.35s ease,box-shadow 0.35s ease,color 0.35s ease">Get in touch</a>
-      </div>
-    </div>
-  </section>
 
   <!-- GOOGLE REVIEW -->
   <section id="reviews" class="reveal" style="padding:clamp(72px,10vw,120px) clamp(22px,4vw,48px);background:#2E3A26;color:#f5f3ea">
@@ -506,12 +509,12 @@
   <!-- FAQS -->
   <section id="faqs" class="reveal" style="padding:clamp(80px,11vw,140px) clamp(22px,4vw,48px);background:#f5f3ea">
     <div style="max-width:900px;margin:0 auto">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#a4bcac"></span><div style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#a4bcac">FAQs</div></div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5.6vw,48px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 56px">Good questions.</h2>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#a4bcac"></span><h2 style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#a4bcac;margin:0;font-family:'Work Sans',sans-serif">FAQs</h2></div>
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5.6vw,48px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 56px">Good questions.</h3>
       <sc-for list="{{ faqs }}" as="faq" hint-placeholder-count="5">
         <div style="border-top:1px solid #2E3A2633;padding:28px 0;cursor:pointer" onClick="{{ faq.toggle }}">
           <div style="display:flex;justify-content:space-between;align-items:center;gap:24px">
-            <h3 style="font-size:19px;font-weight:600;margin:0;font-family:'Space Grotesk',sans-serif">{{ faq.q }}</h3>
+            <h4 style="font-size:19px;font-weight:600;margin:0;font-family:'Space Grotesk',sans-serif">{{ faq.q }}</h4>
             <span style="display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#D6D35C;color:#2E3A26;font-size:16px;font-weight:700;flex-shrink:0">{{ faq.symbol }}</span>
           </div>
           <sc-if value="{{ faq.open }}">
@@ -540,8 +543,8 @@
     <div class="contact-grid" style="position:relative;z-index:1;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px">
       <div>
         <img src="assets/esoterra-e-yellow.png" alt="" style="width:60px;height:60px;display:block;margin:0 0 28px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#D6D35C"></span><div style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#D6D35C">Get in touch</div></div>
-        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5.6vw,48px);line-height:1.05;letter-spacing:-0.02em;margin:0 0 28px">Tell us about your garden.</h2>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#D6D35C"></span><h2 style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#D6D35C;margin:0;font-family:'Work Sans',sans-serif">Get in touch</h2></div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5.6vw,48px);line-height:1.05;letter-spacing:-0.02em;margin:0 0 28px">Tell us about your garden.</h3>
         <p style="font-size:18px;line-height:1.7;opacity:0.85;margin:0 0 40px;max-width:440px">Whether it's a full redesign or a planting refresh, we'd love to hear about the site and what you're hoping for.</p>
         <div style="display:flex;flex-direction:column;gap:16px;font-size:16px">
           <div><span style="opacity: 0.6;">Email</span> &nbsp; <a href="mailto:hello@esoterragardendesign.co.uk" style-hover="color:#D6D35C" style="color:#f5f3ea;text-decoration:none;transition:color 0.3s ease">hello@esoterragardendesign.co.uk</a></div>
@@ -948,9 +951,9 @@ class Component extends DCLogic {
     const aboutImg2Src = this.getRes('aboutImg2', './assets/textured-planting.jpeg');
     const aboutImg3Src = this.getRes('aboutImg3', './assets/staple-hill-border-planting-close.jpg');
     const aboutImg4Src = this.getRes('aboutImg4', './assets/herb-med-planter-crop.jpg');
-    const proj1ImgSrc = this.getRes('proj1Img', './assets/old-rectory.jpg');
-    const proj2ImgSrc = this.getRes('proj2Img', './assets/wharf-cottage-render-3-web.jpg');
-    const proj3ImgSrc = this.getRes('proj3Img', './assets/pettifers-mlp.jpg');
+    const proj1ImgSrc = this.getRes('proj1Img', './assets/old-rectory-render.jpg');
+    const proj2ImgSrc = this.getRes('proj2Img', './assets/wharf-cottage-render-a.jpg');
+    const proj3ImgSrc = this.getRes('proj3Img', './assets/pettifers-render-2.jpg');
     const proj4ImgSrc = this.getRes('proj4Img', './assets/sh-01-front-view.jpg');
     const processCard1ImgSrc = this.getRes('processCard1Img', './assets/knautia-field.jpeg');
     const processCard2ImgSrc = this.getRes('processCard2Img', './assets/oxeye-daisy-field.jpeg');
@@ -977,8 +980,8 @@ class Component extends DCLogic {
     const glow4 = glowProps('half4', true); const glowMask4 = glowMask('half4');
     const projMeta = {
       1: { src: proj1ImgSrc, title: 'Countryside Estate', place: 'Iron Acton, Bristol', gallery: [proj1ImgSrc, './assets/old-rectory-mlp-2-web.jpg', './assets/old-rectory-mlp-web.jpg', './assets/old-rectory-planting-section-web.jpg', './assets/old-rectory-planting-plan-web.jpg'] },
-      2: { src: proj2ImgSrc, title: 'Cotswolds Valley', place: 'Sapperton', gallery: ['./assets/wharf-cottage-render-web.jpg', './assets/wharf-cottage-render-2-web.jpg', './assets/wharf-cottage-render-3-web.jpg', './assets/wharf-cottage-render-4-web.jpg', './assets/wharf-cottage-mlp-web.jpg', './assets/wharf-cottage-planting-plan-web.jpg'] },
-      3: { src: proj3ImgSrc, title: 'Hotel Garden', place: 'Cotswolds' },
+      2: { src: proj2ImgSrc, title: 'Cotswolds Valley', place: 'Sapperton', gallery: [proj2ImgSrc, './assets/wharf-cottage-render-b.jpg', './assets/wharf-cottage-mlp-web.jpg', './assets/wharf-cottage-planting-plan-web.jpg'] },
+      3: { src: proj3ImgSrc, title: 'Hotel Garden', place: 'Cotswolds', gallery: [proj3ImgSrc, './assets/pettifers-render-1.jpg', './assets/pettifers-mlp.jpg'] },
       4: { src: proj4ImgSrc, title: 'City Garden', place: 'Staple Hill, Bristol', gallery: this.staplehill }
     };
     const lb = projMeta[this.state.lightbox] || projMeta[1];

@@ -22,12 +22,35 @@
     return true;
   }
 
-  // Hide the floating icon; a "Cookie preferences" link in the footer opens it instead.
+  // Hide the floating icon permanently via a stylesheet rule (survives the
+  // manager re-rendering the icon after a consent choice); a "Cookie
+  // preferences" link in the footer opens it instead.
+  (function injectHideRule() {
+    var s = document.createElement('style');
+    s.textContent = '#stcm-icon,#stcm-icon *{display:none!important;visibility:hidden!important;pointer-events:none!important}';
+    (document.head || document.documentElement).appendChild(s);
+  })();
+
   function hideIcon() {
+    demoteHeadings();
     var icon = document.querySelector('#stcm-icon');
     if (!icon) return false;
     icon.style.setProperty('display', 'none', 'important');
     return true;
+  }
+
+  // The library renders its panel titles as <h1>/<h2>; the page already has its
+  // own heading outline, so render them as plain styled text instead.
+  function demoteHeadings() {
+    var hs = document.querySelectorAll('#stcm-wrapper h1, #stcm-wrapper h2, #stcm-wrapper h3');
+    for (var i = 0; i < hs.length; i++) {
+      var h = hs[i];
+      var d = document.createElement('div');
+      d.className = h.className;
+      d.setAttribute('style', 'font: inherit; font-size: 1.15em; font-weight: 700; margin: 0 0 8px');
+      d.innerHTML = h.innerHTML;
+      h.parentNode.replaceChild(d, h);
+    }
   }
 
   document.addEventListener('click', function (ev) {
