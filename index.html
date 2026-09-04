@@ -133,7 +133,7 @@
       <a href="about-us.html" style="text-decoration:none;color:#2E3A26">About</a>
       <a href="#projects" style="text-decoration:none;color:#2E3A26">Projects</a>
       <a href="#services" style="text-decoration:none;color:#2E3A26">Services</a>
-      <a href="#process-cards" style="text-decoration:none;color:#2E3A26">Process</a>
+      <a href="design-process.html" style="text-decoration:none;color:#2E3A26">Process</a>
       <a href="#faqs" style="text-decoration:none;color:#2E3A26">FAQs</a>
     </div>
     <div style="display:flex;align-items:center;gap:12px;margin-left:auto">
@@ -156,7 +156,7 @@
         <a href="about-us.html" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">About</a>
         <a href="#projects" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">Projects</a>
         <a href="#services" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">Services</a>
-        <a href="#process-cards" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">Process</a>
+        <a href="design-process.html" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">Process</a>
         <a href="#faqs" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">FAQs</a>
       </div>
       <a href="#contact" onClick="{{ openModalNav }}" style="margin-top:32px;text-align:center;background:#D6D35C;color:#2E3A26;padding:17px 32px;border-radius:100px;font-size:16px;font-weight:700;text-decoration:none">Get in touch</a>
@@ -240,6 +240,13 @@
             <div style="opacity:0.85;font-size:14px">Staple Hill, Bristol</div>
           </div>
         </div>
+        <div onClick="{{ openProj3 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-3" shape="rect" placeholder="Project photo" src="{{ proj3ImgSrc }}" hint-size="100%,100%"></x-import>
+          <div onClick="{{ openProj3 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Hotel Garden</div>
+            <div style="opacity:0.85;font-size:14px">Cotswolds</div>
+          </div>
+        </div>
         <div onClick="{{ openProj1 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
           <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-1" shape="rect" placeholder="Project photo" src="{{ proj1ImgSrc }}" hint-size="100%,100%"></x-import>
           <div onClick="{{ openProj1 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
@@ -250,18 +257,11 @@
         <div onClick="{{ openProj2 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
           <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-2" shape="rect" placeholder="Project photo" src="{{ proj2ImgSrc }}" hint-size="100%,100%"></x-import>
           <div onClick="{{ openProj2 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
-            <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Cotswolds Valley Garden</div>
-            <div style="opacity:0.85;font-size:14px">Sapperton</div>
-          </div>
-        </div>
-        <div onClick="{{ openProj3 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
-          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-3" shape="rect" placeholder="Project photo" src="{{ proj3ImgSrc }}" hint-size="100%,100%"></x-import>
-          <div onClick="{{ openProj3 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
-            <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Hotel Garden</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Wharf Garden</div>
             <div style="opacity:0.85;font-size:14px">Cotswolds</div>
           </div>
         </div>
-      </div>
+              </div>
       <div style="text-align:center;margin-top:56px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
         <a href="#contact" onClick="{{ openModal }}" style-hover="background:#ffffff;color:#2E3A26;box-shadow:inset 0 0 0 2px #D6D35C" style="background:#D6D35C;color:#2E3A26;padding:16px 36px;border-radius:100px;font-size:15px;font-weight:700;text-decoration:none;transition:background 0.35s ease,box-shadow 0.35s ease,color 0.35s ease">Get in touch</a>
       </div>
@@ -347,62 +347,6 @@
     </div>
     <div class="split-img" style="position:relative;z-index:1;overflow:hidden;order:2">
       <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="about-img-2" shape="rect" placeholder="Textured planting" src="{{ aboutImg2Src }}" hint-size="100%,100%"></x-import>
-    </div>
-  </section>
-
-  <!-- PROCESS (CARD VARIANT) -->
-  <section id="process-cards" class="reveal" style="position:relative;padding:clamp(80px,11vw,140px) clamp(22px,4vw,48px);overflow:visible;background:#2E3A26">
-    <div style="max-width:1400px;margin:0 auto;position:relative">
-    <div style="position:relative;z-index:1;display:flex;align-items:center;gap:10px;margin-bottom:20px"><span style="width:28px;height:1px;background:#D6D35C"></span><div style="font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#a4bcac"><div>OUR PROCESS</div></div></div>
-    <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5.6vw,48px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 64px;max-width:700px;color:#f5f3ea">From first visit to first bloom.</h3>
-    <div style="position:relative;z-index:1;display:flex;flex-direction:column">
-      <div data-snap-step="1" class="step" style="position:relative;z-index:1;display:flex;align-items:flex-start;gap:48px;padding:44px 0;border-top:1px solid #f5f3ea26">
-        <div class="step-num" style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(64px,12vw,140px);line-height:1;color:#D6D35C;position:absolute;left:0;top:8px;pointer-events:none;user-select:none">01</div>
-        <div class="step-dot" style="position:absolute;left:180px;top:44px;width:52px;height:52px;border-radius:50%;background:#D6D35C;z-index:2;box-shadow:0 0 0 5px #2E3A26"></div>
-        <div class="step-body" style="position:relative;max-width:640px;margin-left:180px">
-          <div style="position:relative;z-index:3;width:52px;height:52px;border-radius:50%;overflow:hidden;flex-shrink:0;margin-bottom:16px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="process-card-1-img" shape="circle" placeholder="Photo" src="{{ processCard1ImgSrc }}" hint-size="52px,52px"></x-import></div>
-          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:600;color:#f5f3ea;margin:0 0 10px">Consultation and brief</h3>
-          <p style="font-size:16px;line-height:1.65;color:#f5f3ea;opacity:0.75;margin:0">We visit the garden, discuss what you would like to achieve and recommend the most suitable level of design support.</p>
-        </div>
-      </div>
-      <div data-snap-step="2" class="step" style="position:relative;z-index:1;display:flex;align-items:flex-start;justify-content:flex-end;text-align:right;gap:48px;padding:44px 0;border-top:1px solid #f5f3ea26">
-        <div class="step-dot" style="position:absolute;right:180px;top:44px;width:52px;height:52px;border-radius:50%;background:#D6D35C;z-index:2;box-shadow:0 0 0 5px #2E3A26"></div>
-        <div class="step-body" style="position:relative;max-width:640px;margin-right:180px">
-          <div class="step-avatar" style="position:relative;z-index:3;width:52px;height:52px;border-radius:50%;overflow:hidden;flex-shrink:0;margin-bottom:16px;margin-left:auto"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="process-card-2-img" shape="circle" placeholder="Photo" src="{{ processCard2ImgSrc }}" hint-size="52px,52px"></x-import></div>
-          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:600;color:#f5f3ea;margin:0 0 10px">Garden survey</h3>
-          <p style="font-size:16px;line-height:1.65;color:#f5f3ea;opacity:0.75;margin:0">The site is carefully measured and recorded, giving us the accurate information needed to draw and design the space.</p>
-        </div>
-        <div class="step-num" style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(64px,12vw,140px);line-height:1;color:#D6D35C;position:absolute;right:0;top:8px;pointer-events:none;user-select:none">02</div>
-      </div>
-      <div data-snap-step="3" class="step" style="position:relative;z-index:1;display:flex;align-items:flex-start;gap:48px;padding:44px 0;border-top:1px solid #f5f3ea26">
-        <div class="step-num" style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(64px,12vw,140px);line-height:1;color:#D6D35C;position:absolute;left:0;top:8px;pointer-events:none;user-select:none">03</div>
-        <div class="step-dot" style="position:absolute;left:180px;top:44px;width:52px;height:52px;border-radius:50%;background:#D6D35C;z-index:2;box-shadow:0 0 0 5px #2E3A26"></div>
-        <div class="step-body" style="position:relative;max-width:640px;margin-left:180px">
-          <div style="position:relative;z-index:3;width:52px;height:52px;border-radius:50%;overflow:hidden;flex-shrink:0;margin-bottom:16px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="process-card-3-img" shape="circle" placeholder="Photo" src="{{ processCard3ImgSrc }}" hint-size="52px,52px"></x-import></div>
-          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:600;color:#f5f3ea;margin:0 0 10px">Moodboards and initial design</h3>
-          <p style="font-size:16px;line-height:1.65;color:#f5f3ea;opacity:0.75;margin:0">We prepare mood-boards to communicate the proposed style, materials and planting character. We then turn this direction into a concept plan for you to review.</p>
-        </div>
-      </div>
-      <div data-snap-step="4" class="step" style="position:relative;z-index:1;display:flex;align-items:flex-start;justify-content:flex-end;text-align:right;gap:48px;padding:44px 0;border-top:1px solid #f5f3ea26">
-        <div class="step-dot" style="position:absolute;right:180px;top:44px;width:52px;height:52px;border-radius:50%;background:#D6D35C;z-index:2;box-shadow:0 0 0 5px #2E3A26"></div>
-        <div class="step-body" style="position:relative;max-width:640px;margin-right:180px">
-          <div class="step-avatar" style="position:relative;z-index:3;width:52px;height:52px;border-radius:50%;overflow:hidden;flex-shrink:0;margin-bottom:16px;margin-left:auto"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="process-card-4-img" shape="circle" placeholder="Photo" src="{{ processCard4ImgSrc }}" hint-size="52px,52px"></x-import></div>
-          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:600;color:#f5f3ea;margin:0 0 10px">Detailed plans</h3>
-          <p style="font-size:16px;line-height:1.65;color:#f5f3ea;opacity:0.75;margin:0">Once the overall garden design is agreed, we produce the practical information needed to bring it to life. This typically includes a master layout plan, along with construction details and material specifications. The planting design then follows, with a detailed planting plan, full plant list and schedule.</p>
-        </div>
-        <div class="step-num" style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(64px,12vw,140px);line-height:1;color:#D6D35C;position:absolute;right:0;top:8px;pointer-events:none;user-select:none">04</div>
-      </div>
-      <div data-snap-step="5" class="step" style="position:relative;z-index:1;display:flex;align-items:flex-start;gap:48px;padding:44px 0 12px;border-top:1px solid #f5f3ea26">
-        <div class="step-num" style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(64px,12vw,140px);line-height:1;color:#D6D35C;position:absolute;left:0;top:8px;pointer-events:none;user-select:none">05</div>
-        <div class="step-dot" style="position:absolute;left:180px;top:44px;width:52px;height:52px;border-radius:50%;background:#D6D35C;z-index:2;box-shadow:0 0 0 5px #2E3A26"></div>
-        <div class="step-body" style="position:relative;max-width:640px;margin-left:180px">
-          <div style="position:relative;z-index:3;width:52px;height:52px;border-radius:50%;overflow:hidden;flex-shrink:0;margin-bottom:16px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="process-5-img" shape="circle" placeholder="Photo" src="{{ processCard5ImgSrc }}" hint-size="52px,52px"></x-import></div>
-          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:600;color:#f5f3ea;margin:0 0 10px">Construction and planting</h3>
-          <div style="font-size:16px;line-height:1.65;color:#f5f3ea;opacity:0.75;margin:0"><div>You can use the plans with your own contractor or ask us to coordinate the build using landscapers we know and trust. We can then source the plants, lay out the scheme and complete the planting.</div></div>
-        </div>
-      </div>
-    </div>
-    <a href="#contact" onClick="{{ openModal }}" style-hover="background:#ffffff;color:#2E3A26;box-shadow:inset 0 0 0 2px #D6D35C" style="display:inline-block;margin-top:24px;background:#D6D35C;color:#2E3A26;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:700;text-decoration:none;transition:background 0.35s ease,box-shadow 0.35s ease,color 0.35s ease">Start your Project</a>
     </div>
   </section>
 
@@ -548,7 +492,6 @@
         <p style="font-size:18px;line-height:1.7;opacity:0.85;margin:0 0 40px;max-width:440px">Whether it's a full redesign or a planting refresh, we'd love to hear about the site and what you're hoping for.</p>
         <div style="display:flex;flex-direction:column;gap:16px;font-size:16px">
           <div><span style="opacity: 0.6;">Email</span> &nbsp; <a href="mailto:hello@esoterragardendesign.co.uk" style-hover="color:#D6D35C" style="color:#f5f3ea;text-decoration:none;transition:color 0.3s ease">hello@esoterragardendesign.co.uk</a></div>
-          <div><span style="opacity: 0.6;">Phone</span>&nbsp; &nbsp;<a href="tel:+447825166378" style-hover="color:#D6D35C" style="color:#f5f3ea;text-decoration:none;transition:color 0.3s ease">07825 166 378</a></div>
           <div><span style="opacity: 0.6;">Studio</span> &nbsp; Bristol, UK</div>
           <a href="https://www.instagram.com/esoterra_garden_design/" target="_blank" rel="noopener" style-hover="color:#D6D35C" style="display:inline-flex;align-items:center;gap:10px;width:fit-content;margin-top:4px;color:#f5f3ea;text-decoration:none;transition:color 0.3s ease">
             <svg viewBox="0 0 24 24" style="width:18px;height:18px;flex:none;display:block" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
@@ -980,8 +923,8 @@ class Component extends DCLogic {
     const glow4 = glowProps('half4', true); const glowMask4 = glowMask('half4');
     const projMeta = {
       1: { src: proj1ImgSrc, title: 'Countryside Estate', place: 'Iron Acton, Bristol', gallery: [proj1ImgSrc, './assets/old-rectory-mlp-2-web.jpg', './assets/old-rectory-mlp-web.jpg', './assets/old-rectory-planting-section-web.jpg', './assets/old-rectory-planting-plan-web.jpg'] },
-      2: { src: proj2ImgSrc, title: 'Cotswolds Valley', place: 'Sapperton', gallery: [proj2ImgSrc, './assets/wharf-cottage-render-b.jpg', './assets/wharf-cottage-mlp-web.jpg', './assets/wharf-cottage-planting-plan-web.jpg'] },
-      3: { src: proj3ImgSrc, title: 'Hotel Garden', place: 'Cotswolds', gallery: [proj3ImgSrc, './assets/pettifers-render-1.jpg', './assets/pettifers-mlp.jpg'] },
+      2: { src: proj2ImgSrc, title: 'Wharf Garden', place: 'Cotswolds', gallery: [proj2ImgSrc, './assets/wharf-cottage-render-b.jpg', './assets/wharf-cottage-mlp-web.jpg', './assets/wharf-cottage-planting-plan-web.jpg'] },
+      3: { src: proj3ImgSrc, title: 'Hotel Garden', place: 'Cotswolds', gallery: [proj3ImgSrc, './assets/pettifers-render-1.jpg', './assets/pettifers-mlp.png'] },
       4: { src: proj4ImgSrc, title: 'City Garden', place: 'Staple Hill, Bristol', gallery: this.staplehill }
     };
     const lb = projMeta[this.state.lightbox] || projMeta[1];
@@ -1039,16 +982,5 @@ class Component extends DCLogic {
   }
 }
 </script>
-<form name="enquiry" method="POST" action="/" netlify data-netlify="true" netlify-honeypot="botfield" aria-hidden="true" style="position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden">
-  <input type="text" name="name">
-  <input type="email" name="email">
-  <input type="tel" name="phone">
-  <input type="text" name="location">
-  <input type="text" name="interest">
-  <textarea name="notes"></textarea>
-  <textarea name="message"></textarea>
-  <input type="text" name="source">
-  <input type="text" name="botfield">
-</form>
 </body>
 </html>

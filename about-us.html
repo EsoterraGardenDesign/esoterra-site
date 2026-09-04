@@ -67,7 +67,7 @@
       <a href="about-us.html" style="text-decoration:none;color:#2E3A26;border-bottom:1.5px solid #D6D35C;padding-bottom:2px">About</a>
       <a href="index.html#services" style="text-decoration:none;color:#2E3A26">Services</a>
       <a href="index.html#projects" style="text-decoration:none;color:#2E3A26">Projects</a>
-      <a href="index.html#process-cards" style="text-decoration:none;color:#2E3A26">Process</a>
+      <a href="design-process.html" style="text-decoration:none;color:#2E3A26">Process</a>
       <a href="index.html#faqs" style="text-decoration:none;color:#2E3A26">FAQs</a>
     </div>
     <div style="display:flex;align-items:center;gap:16px;margin-left:auto">
@@ -90,7 +90,7 @@
         <a href="about-us.html" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#8a9a5b;border-bottom:1px solid #2E3A261a">About</a>
         <a href="index.html#services" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">Services</a>
         <a href="index.html#projects" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">Projects</a>
-        <a href="index.html#process-cards" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">Process</a>
+        <a href="design-process.html" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">Process</a>
         <a href="index.html#faqs" onClick="{{ closeNav }}" style="padding:15px 0;font-size:26px;font-weight:600;letter-spacing:-0.01em;text-decoration:none;color:#2E3A26;border-bottom:1px solid #2E3A261a">FAQs</a>
       </div>
       <a href="#contact" onClick="{{ closeNav }}" style="margin-top:32px;text-align:center;background:#D6D35C;color:#2E3A26;padding:17px 32px;border-radius:100px;font-size:16px;font-weight:700;text-decoration:none">Get in touch</a>
@@ -183,7 +183,6 @@
         <p style="font-size:18px;line-height:1.7;opacity:0.85;margin:0 0 40px;max-width:440px">Whether it's a full redesign or a planting refresh, we'd love to hear about the site and what you're hoping for.</p>
         <div style="display:flex;flex-direction:column;gap:16px;font-size:16px">
           <div><span style="opacity:0.6">Email</span> &nbsp; <a href="mailto:hello@esoterragardendesign.co.uk" style-hover="color:#D6D35C" style="color:#f5f3ea;text-decoration:none;transition:color 0.3s ease">hello@esoterragardendesign.co.uk</a></div>
-          <div><span style="opacity:0.6">Phone</span>&nbsp; &nbsp;<a href="tel:+447825166378" style-hover="color:#D6D35C" style="color:#f5f3ea;text-decoration:none;transition:color 0.3s ease">07825 166 378</a></div>
           <div><span style="opacity:0.6">Studio</span> &nbsp; Bristol, UK</div>
           <a href="https://www.instagram.com/esoterra_garden_design/" target="_blank" rel="noopener" style-hover="color:#D6D35C" style="display:inline-flex;align-items:center;gap:10px;width:fit-content;margin-top:4px;color:#f5f3ea;text-decoration:none;transition:color 0.3s ease">
             <svg viewBox="0 0 24 24" style="width:18px;height:18px;flex:none;display:block" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
@@ -347,16 +346,5 @@ class Component extends DCLogic {
   }
 }
 </script>
-<form name="enquiry" method="POST" action="/" netlify data-netlify="true" netlify-honeypot="botfield" aria-hidden="true" style="position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden">
-  <input type="text" name="name">
-  <input type="email" name="email">
-  <input type="tel" name="phone">
-  <input type="text" name="location">
-  <input type="text" name="interest">
-  <textarea name="notes"></textarea>
-  <textarea name="message"></textarea>
-  <input type="text" name="source">
-  <input type="text" name="botfield">
-</form>
 </body>
 </html>

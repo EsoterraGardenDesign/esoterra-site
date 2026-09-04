@@ -285,7 +285,8 @@
     // Explicit width/height on the element override all of this.
     ':host{display:block;position:relative;' +
     '  font:13px/1.3 system-ui,-apple-system,sans-serif;color:rgba(0,0,0,.55);' +
-    '  width:100%;height:100%;aspect-ratio:3/2}' +
+    '  width:100%;height:100%;aspect-ratio:3/2;touch-action:pan-y pinch-zoom}' +
+    ':host([data-reframe]){touch-action:none}' +
     '.frame{position:absolute;inset:0;overflow:hidden;background:rgba(0,0,0,.04)}' +
     // .frame img (clipped) and .spill (unclipped ghost + handles) share the
     // same left/top/width/height in frame-%, computed by _applyView(), so the
