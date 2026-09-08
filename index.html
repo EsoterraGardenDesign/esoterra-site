@@ -18,7 +18,7 @@
 <meta name="ext-resource-dependency" content="./assets/staple-hill-border-planting-close.jpg" data-resource-id="aboutImg3">
 <meta name="ext-resource-dependency" content="./assets/herb-med-planter-crop.jpg" data-resource-id="aboutImg4">
 <meta name="ext-resource-dependency" content="./assets/old-rectory-render.jpg" data-resource-id="proj1Img">
-<meta name="ext-resource-dependency" content="./assets/wharf-cottage-render-a.jpg" data-resource-id="proj2Img">
+<meta name="ext-resource-dependency" content="./assets/wharf-cottage-render-b.jpg" data-resource-id="proj2Img">
 <meta name="ext-resource-dependency" content="./assets/pettifers-render-2.jpg" data-resource-id="proj3Img">
 <meta name="ext-resource-dependency" content="./assets/sh-01-front-view.jpg" data-resource-id="proj4Img">
 <meta name="ext-resource-dependency" content="./assets/knautia-field.jpeg" data-resource-id="processCard1Img">
@@ -739,6 +739,8 @@ class Component extends DCLogic {
   // Netlify Forms: submissions POST url-encoded to the site root with a
   // form-name field matching the hidden static form Netlify detects at deploy.
   ENQUIRY_FORM_NAME = 'enquiry';
+  // Real page load at a stable URL so Google Ads can count it as a conversion.
+  thankYouUrl() { return location.pathname.indexOf('.dc.html') > -1 ? 'Thank You.dc.html' : '/thank-you'; }
   sendEnquiry = async (payload) => {
     const body = new URLSearchParams();
     body.append('form-name', this.ENQUIRY_FORM_NAME);
@@ -768,8 +770,7 @@ class Component extends DCLogic {
         botfield: fd.get('botfield'),
         source: 'Contact section'
       });
-      form.reset();
-      this.setState({ contactBusy: false, contactMessage: 'Thank you — your message is on its way. We will be in touch shortly.' });
+      window.location.href = this.thankYouUrl();
     } catch (err) {
       this.setState({ contactBusy: false, contactMessage: err.message });
     }
@@ -795,7 +796,7 @@ class Component extends DCLogic {
         name: a.name, email: a.email, phone: a.phone, location: a.location,
         notes: a.notes, interest: this.state.picks || [], source: 'Consultation form'
       });
-      this.setState({ modalBusy: false, modalSent: true });
+      window.location.href = this.thankYouUrl();
     } catch (err) {
       this.setState({ modalBusy: false, modalError: err.message });
     }
@@ -895,7 +896,7 @@ class Component extends DCLogic {
     const aboutImg3Src = this.getRes('aboutImg3', './assets/staple-hill-border-planting-close.jpg');
     const aboutImg4Src = this.getRes('aboutImg4', './assets/herb-med-planter-crop.jpg');
     const proj1ImgSrc = this.getRes('proj1Img', './assets/old-rectory-render.jpg');
-    const proj2ImgSrc = this.getRes('proj2Img', './assets/wharf-cottage-render-a.jpg');
+    const proj2ImgSrc = this.getRes('proj2Img', './assets/wharf-cottage-render-b.jpg');
     const proj3ImgSrc = this.getRes('proj3Img', './assets/pettifers-render-2.jpg');
     const proj4ImgSrc = this.getRes('proj4Img', './assets/sh-01-front-view.jpg');
     const processCard1ImgSrc = this.getRes('processCard1Img', './assets/knautia-field.jpeg');
@@ -923,7 +924,7 @@ class Component extends DCLogic {
     const glow4 = glowProps('half4', true); const glowMask4 = glowMask('half4');
     const projMeta = {
       1: { src: proj1ImgSrc, title: 'Countryside Estate', place: 'Iron Acton, Bristol', gallery: [proj1ImgSrc, './assets/old-rectory-mlp-2-web.jpg', './assets/old-rectory-mlp-web.jpg', './assets/old-rectory-planting-section-web.jpg', './assets/old-rectory-planting-plan-web.jpg'] },
-      2: { src: proj2ImgSrc, title: 'Wharf Garden', place: 'Cotswolds', gallery: [proj2ImgSrc, './assets/wharf-cottage-render-b.jpg', './assets/wharf-cottage-mlp-web.jpg', './assets/wharf-cottage-planting-plan-web.jpg'] },
+      2: { src: proj2ImgSrc, title: 'Wharf Garden', place: 'Cotswolds', gallery: [proj2ImgSrc, './assets/wharf-cottage-render-a.jpg', './assets/wharf-cottage-mlp-web.jpg', './assets/wharf-cottage-planting-plan-web.jpg'] },
       3: { src: proj3ImgSrc, title: 'Hotel Garden', place: 'Cotswolds', gallery: [proj3ImgSrc, './assets/pettifers-render-1.jpg', './assets/pettifers-mlp.png'] },
       4: { src: proj4ImgSrc, title: 'City Garden', place: 'Staple Hill, Bristol', gallery: this.staplehill }
     };

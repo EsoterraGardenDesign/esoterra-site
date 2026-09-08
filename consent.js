@@ -2,6 +2,14 @@
   if (window.__stcmLoaded) return;
   window.__stcmLoaded = true;
 
+  // Global gtag shim so any page can send GA4 events. Calls made before the
+  // GA4 library loads (or before consent) queue in dataLayer and are processed
+  // once gtag/js runs its config.
+  window.dataLayer = window.dataLayer || [];
+  if (typeof window.gtag !== 'function') {
+    window.gtag = function () { window.dataLayer.push(arguments); };
+  }
+
   var vars = {
     '--boxShadow': '-5px 5px 10px 0px #00000012, 0px 0px 50px 0px #0000001a',
     '--fontFamily': "'Work Sans', Helvetica Neue, Segoe UI, Arial, sans-serif",
@@ -93,10 +101,8 @@
             { url: 'https://www.googletagmanager.com/gtag/js?id=G-Y82DL96GQF', load: 'async' }
           ],
           onAccept: function () {
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { window.dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'G-Y82DL96GQF');
+            window.gtag('js', new Date());
+            window.gtag('config', 'G-Y82DL96GQF');
           }
         },
         {
