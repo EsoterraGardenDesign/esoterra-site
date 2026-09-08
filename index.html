@@ -983,5 +983,17 @@ class Component extends DCLogic {
   }
 }
 </script>
+<!-- Netlify Forms detection: parsed at deploy so POSTs to / with form-name=enquiry are accepted. Do not remove. -->
+<form name="enquiry" method="POST" action="/" netlify data-netlify="true" netlify-honeypot="botfield" aria-hidden="true" style="position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden">
+  <input type="text" name="name">
+  <input type="email" name="email">
+  <input type="tel" name="phone">
+  <input type="text" name="location">
+  <input type="text" name="interest">
+  <textarea name="notes"></textarea>
+  <textarea name="message"></textarea>
+  <input type="text" name="source">
+  <input type="text" name="botfield">
+</form>
 </body>
 </html>
