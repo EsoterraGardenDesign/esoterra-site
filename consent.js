@@ -103,6 +103,10 @@
           onAccept: function () {
             window.gtag('js', new Date());
             window.gtag('config', 'G-Y82DL96GQF');
+            // Events pushed before config are discarded, so let pages know
+            // GA4 is configured and safe to send to.
+            window.__ga4Ready = true;
+            window.dispatchEvent(new Event('ga4ready'));
           }
         },
         {

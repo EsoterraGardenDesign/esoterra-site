@@ -81,12 +81,15 @@ class Component extends DCLogic {
   componentDidMount() {
     // GA4 lead event so the conversion can also be imported into Google Ads
     // as an event-based goal later, alongside the URL-based one.
-    // consent.js defines the global gtag shim; calls queue until GA4 configures.
-    window.dataLayer = window.dataLayer || [];
-    if (typeof window.gtag !== 'function') {
-      window.gtag = function () { window.dataLayer.push(arguments); };
-    }
-    window.gtag('event', 'generate_lead', { form_source: 'website enquiry' });
+    // GA4 discards events that arrive before gtag('config'), so wait for the
+    // ga4ready signal consent.js fires once analytics consent is granted.
+    const send = () => {
+      if (this.leadSent || typeof window.gtag !== 'function') return;
+      this.leadSent = true;
+      window.gtag('event', 'generate_lead', { form_source: 'website enquiry' });
+    };
+    if (window.__ga4Ready) send();
+    else window.addEventListener('ga4ready', send, { once: true });
   }
 }
 </script>
