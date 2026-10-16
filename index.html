@@ -17,7 +17,7 @@
 <meta name="ext-resource-dependency" content="./assets/textured-planting.jpeg" data-resource-id="aboutImg2">
 <meta name="ext-resource-dependency" content="./assets/staple-hill-border-planting-close.jpg" data-resource-id="aboutImg3">
 <meta name="ext-resource-dependency" content="./assets/herb-med-planter-crop.jpg" data-resource-id="aboutImg4">
-<meta name="ext-resource-dependency" content="./assets/old-rectory-render.jpg" data-resource-id="proj1Img">
+<meta name="ext-resource-dependency" content="./assets/old-rectory-rose-arch-render.jpg" data-resource-id="proj1Img">
 <meta name="ext-resource-dependency" content="./assets/wharf-cottage-render-b.jpg" data-resource-id="proj2Img">
 <meta name="ext-resource-dependency" content="./assets/pettifers-render-2.jpg" data-resource-id="proj3Img">
 <meta name="ext-resource-dependency" content="./assets/sh-01-front-view.jpg" data-resource-id="proj4Img">
@@ -240,18 +240,18 @@
             <div style="opacity:0.85;font-size:14px">Staple Hill, Bristol</div>
           </div>
         </div>
-        <div onClick="{{ openProj3 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
-          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-3" shape="rect" placeholder="Project photo" src="{{ proj3ImgSrc }}" hint-size="100%,100%"></x-import>
-          <div onClick="{{ openProj3 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
-            <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Hotel Garden</div>
-            <div style="opacity:0.85;font-size:14px">Cotswolds</div>
-          </div>
-        </div>
         <div onClick="{{ openProj1 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
           <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-1" shape="rect" placeholder="Project photo" src="{{ proj1ImgSrc }}" hint-size="100%,100%"></x-import>
           <div onClick="{{ openProj1 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
             <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Countryside Estate</div>
             <div style="opacity:0.85;font-size:14px">Iron Acton, Bristol</div>
+          </div>
+        </div>
+        <div onClick="{{ openProj3 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="proj-3" shape="rect" placeholder="Project photo" src="{{ proj3ImgSrc }}" hint-size="100%,100%"></x-import>
+          <div onClick="{{ openProj3 }}" style="position:absolute;left:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(transparent,#5A7263F2);cursor:zoom-in">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Hotel Garden</div>
+            <div style="opacity:0.85;font-size:14px">Cotswolds</div>
           </div>
         </div>
         <div onClick="{{ openProj2 }}" class="proj-cell" style="position:relative;overflow:hidden;cursor:zoom-in;aspect-ratio:3 / 2">
@@ -895,7 +895,7 @@ class Component extends DCLogic {
     const aboutImg2Src = this.getRes('aboutImg2', './assets/textured-planting.jpeg');
     const aboutImg3Src = this.getRes('aboutImg3', './assets/staple-hill-border-planting-close.jpg');
     const aboutImg4Src = this.getRes('aboutImg4', './assets/herb-med-planter-crop.jpg');
-    const proj1ImgSrc = this.getRes('proj1Img', './assets/old-rectory-render.jpg');
+    const proj1ImgSrc = this.getRes('proj1Img', './assets/old-rectory-rose-arch-render.jpg');
     const proj2ImgSrc = this.getRes('proj2Img', './assets/wharf-cottage-render-b.jpg');
     const proj3ImgSrc = this.getRes('proj3Img', './assets/pettifers-render-2.jpg');
     const proj4ImgSrc = this.getRes('proj4Img', './assets/sh-01-front-view.jpg');
